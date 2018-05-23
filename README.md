@@ -76,6 +76,11 @@ $ /etc/init.d/networking restart
 $ hostname -I
 ```
 
+## check wifi name
+```sh
+```
+
+
 
 ## Running the App
 
