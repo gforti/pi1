@@ -48,6 +48,35 @@ $ cd ..
 ```
 
 
+## update wifi password settings
+```sh
+$ sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
+```
+
+Then add the following.  The higher priority number will try to connect first.
+
+```js
+network={
+    ssid="testing"
+    psk="password"
+    priority=2
+    id_str="work"
+}
+```
+
+## restart wifi
+
+```sh
+$ /etc/init.d/networking restart
+```
+
+
+## check ip address
+```sh
+$ hostname -I
+```
+
+
 ## Running the App
 
  Note that everyone must be on the same network/WiFi. `Chrome` is the recommend web browser.
