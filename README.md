@@ -27,6 +27,26 @@ $ sudo shutdown -h now
 $ sudo shutdown -r now
 ```
 
+## Remove Folder
+```sh
+$ sudo rm -rf [folder-name]
+```
+
+## Clone GIT Repo
+```sh
+$ git clone https://github.com/...
+```
+
+## check directory
+```sh
+$ ls
+```
+
+## change directory
+```sh
+$ cd ..
+```
+
 
 ## Running the App
 
