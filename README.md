@@ -81,7 +81,10 @@ $ hostname -I
 $ iwgetid
 ```
 
-
+## SSH in
+```sh
+$ ssh pi@<IP> [-port 22 ]
+```
 
 ## Running the App
 
