@@ -1,19 +1,47 @@
-var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
-var LED = new Gpio(4, 'out'); //use GPIO pin 4, and specify that it is output
-var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
+var express = require('express'); 
+var app = express();
+var path = require('path');
+var gpio = require('rpi-gpio');
 
-function blinkLED() { //function to start blinking
-  if (LED.readSync() === 0) { //check the pin state, if the state is 0 (or off)
-    LED.writeSync(1); //set pin state to 1 (turn LED on)
-  } else {
-    LED.writeSync(0); //set pin state to 0 (turn LED off)
-  }
-}
+const PIN = 4;
 
-function endBlink() { //function to stop blinking
-  clearInterval(blinkInterval); // Stop blink intervals
-  LED.writeSync(0); // Turn LED off
-  LED.unexport(); // Unexport GPIO to free resources
-}
+gpio.setup(PIN, gpio.DIR_OUT);
 
-setTimeout(endBlink, 5000); //stop blinking after 5 seconds
+
+
+
+app.set('view engine', 'ejs');
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+console.log(path.join(__dirname, 'public'));
+
+app.get('/', function(req, res){ 
+ 	res.render('index',{status:"Press Button To change Status of Led !!"});
+});
+
+app.post('/led/on', function(req, res){
+gpio.write(PIN, true, function(err) {
+        if (err) throw err;
+        console.log('Written True to pin');
+	console.log(path.join(__dirname, 'public'));
+	return res.render('index', {status: "Cool!!Led is On"});
+    });
+
+});
+
+
+app.post('/led/off', function(req, res){
+gpio.write(PIN, false, function(err) {
+        if (err) throw err;
+        console.log('Written False to pin');
+	console.log(path.join(__dirname, 'public'));
+	return res.render('index',{status: "Ohh!! Led is Off"});
+    });
+
+});
+
+
+app.listen(3000, function () {
+  console.log('Simple LED Control Server Started on Port: 3000!')
+})
