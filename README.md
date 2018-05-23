@@ -86,6 +86,12 @@ $ iwgetid
 $ ssh pi@<IP> [-port 22 ]
 ```
 
+
+## lessons
+
+- Need resistors
+
+
 ## Running the App
 
  Note that everyone must be on the same network/WiFi. `Chrome` is the recommend web browser.
