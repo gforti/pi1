@@ -13,7 +13,7 @@ http.listen(2099); //listen to port 8080
 console.log(`Listening on http://${host_ip}:2099/index.html`)
 
 function handler (req, res) { //create server    
-  fs.readFile(__dirname + '/public/index.html', function(err, data) { //read file index.html in public folder
+  fs.readFile(__dirname + '/index.html', function(err, data) { //read file index.html in public folder
     if (err) {
       res.writeHead(404, {'Content-Type': 'text/html'}); //display 404 on error
       return res.end("404 Not Found");
