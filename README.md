@@ -78,6 +78,7 @@ $ hostname -I
 
 ## check wifi name
 ```sh
+$ iwgetid
 ```
 
 
