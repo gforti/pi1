@@ -10,7 +10,10 @@ var pushButton = new Gpio(17, 'in', 'both'); //use GPIO pin 17 as input, and 'bo
 
 http.listen(3000); //listen to port 8080
 
+console.log(`Listening on http://${host_ip}:3000/index.html`)
+
 function handler (req, res) { //create server
+    console.log(`Listening on http://${host_ip}:3000/index.html`)
   fs.readFile(__dirname + '/public/index.html', function(err, data) { //read file index.html in public folder
     if (err) {
       res.writeHead(404, {'Content-Type': 'text/html'}); //display 404 on error
@@ -20,7 +23,7 @@ function handler (req, res) { //create server
     res.write(data); //write data from index.html
     return res.end();
   });
-  console.log(`Listening on http://${host_ip}:3000/index.html`)
+  
 }
 
 io.sockets.on('connection', function (socket) {// WebSocket Connection
