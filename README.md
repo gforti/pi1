@@ -99,6 +99,9 @@ gnd - ground
 do - GPIO pin digital output
 ao - analog output
 
+ground (GND) = -
+VCC (3.3v or 5v) = +
+
 
 ## Running the App
 
