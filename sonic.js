@@ -10,14 +10,14 @@ usonic.init(function (error) {
         console.log(error)
     } else {
         console.log('started')
+        const ECHO = 6
+        const TRIGGER = 23
+
+        var sensor = usonic.createSensor(ECHO, TRIGGER, 450);
+
+        var distance = sensor();
+
+        console.log(distance);
     }
 });
 
-const ECHO = 6
-const TRIGGER = 23
-
-var sensor = usonic.createSensor(ECHO, TRIGGER, 450);
-
-var distance = sensor();
-
-console.log(distance);
