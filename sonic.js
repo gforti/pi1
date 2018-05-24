@@ -3,23 +3,21 @@
  */
 
 
-var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
+var usonic = require('mmm-usonic');
 
-var trigger = new Gpio(13, 'out'); 
-var echo = new Gpio(6, 'in'); 
-
-echo.read(function (err, value) { //Watch for hardware interrupts on pushButton GPIO, specify callback function
-  if (err) { //if an error
-    console.error('There was an error', err); //output error message to console
-  return;
-  }
-  console.log(value)
-  
+usonic.init(function (error) {
+    if (error) {
+        console.log(error)
+    } else {
+        console.log('started')
+    }
 });
 
-function unexportOnClose() { //function to run when exiting program 
-  trigger.unexport(); // Unexport Button GPIO to free resources
-  echo.unexport(); // Unexport Button GPIO to free resources
-};
+const ECHO = 6
+const TRIGGER = 23
 
-process.on('SIGINT', unexportOnClose); //function to run when user closes using ctrl+c
+var sensor = usonic.createSensor(ECHO, TRIGGER, 450);
+
+var distance = sensor();
+
+console.log(distance);
