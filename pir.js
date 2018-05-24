@@ -17,13 +17,14 @@ sensor.watch(function (err, value) { //Watch for hardware interrupts on pushButt
   console.log(value)
   
   LED.writeSync(value);
-  LED.writeSync(0); // Turn LED off
-  LED.unexport(); // Unexport GPIO to free resources
+ 
   
 });
 
 function unexportOnClose() { //function to run when exiting program 
   sensor.unexport(); // Unexport Button GPIO to free resources
+   LED.writeSync(0); // Turn LED off
+  LED.unexport(); // Unexport GPIO to free resources
 };
 
 process.on('SIGINT', unexportOnClose); //function to run when user closes using ctrl+c
