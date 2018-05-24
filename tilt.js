@@ -1,6 +1,6 @@
 var Gpio = require('onoff').Gpio; //include onoff to interact with the GPIO
 
-var sensor = new Gpio(21, 'in'); //use GPIO pin 17 as input, and 'both' button presses, and releases should be handled
+var sensor = new Gpio(17, 'in'); //use GPIO pin 17 as input, and 'both' button presses, and releases should be handled
 
 sensor.watch(function (err, value) { //Watch for hardware interrupts on pushButton GPIO, specify callback function
   if (err) { //if an error
