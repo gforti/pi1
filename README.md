@@ -92,6 +92,14 @@ $ ssh pi@<IP> [-port 22 ]
 - Need resistors
 
 
+# understanding pins
+
+VCC - 5v
+gnd - ground
+do - GPIO pin digital output
+ao - analog output
+
+
 ## Running the App
 
  Note that everyone must be on the same network/WiFi. `Chrome` is the recommend web browser.
